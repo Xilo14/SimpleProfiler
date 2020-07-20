@@ -6,9 +6,9 @@ namespace SimpleProfiler
 {
     public static class PerfRegister
     {
-        public static List<RegisterRecord> Records { get; set; } = new List<RegisterRecord>();
+        public static List<IRegisterRecord> Records { get; set; } = new List<IRegisterRecord>();
 
-        public static RegisterRecord? LastRecord
+        public static IRegisterRecord? LastRecord
         {
             get
             {
@@ -20,18 +20,10 @@ namespace SimpleProfiler
 
         }
     }
-
-    public struct RegisterRecord
-    {
-        public DateTime Start;
-        public DateTime Finish;
-        public TimeSpan Elapsed;
-
-        public RegisterRecord(DateTime Start,DateTime Finish,TimeSpan Elapsed)
-        {
-            this.Start = Start;
-            this.Finish = Finish;
-            this.Elapsed = Elapsed;
-        }
+    public interface IRegisterRecord {
+        public DateTime Start { get; }
+        public DateTime Finish { get; }
+        public TimeSpan Elapsed { get; }
     }
+   
 }
