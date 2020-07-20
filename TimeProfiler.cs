@@ -30,4 +30,18 @@ namespace SimpleProfiler
             PerfRegister.Records.Add(record);
         }
     }
+
+    public struct RegisterRecord : IRegisterRecord
+    {
+        public RegisterRecord(DateTime Start, DateTime Finish, TimeSpan Elapsed)
+        {
+            this.Start = Start;
+            this.Finish = Finish;
+            this.Elapsed = Elapsed;
+        }
+
+        public DateTime Start { get; }
+        public DateTime Finish { get; }
+        public TimeSpan Elapsed { get; }
+    }
 }
